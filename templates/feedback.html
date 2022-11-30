@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Feedback | LCC-Confession{% endblock title %}
+
+{% block body %}
+{% if success %}
+<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+    <strong>Your feedback has been submitted. We appreciate you reaching out.</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<form class="container" method="post" action="feedback">
+    {% csrf_token %}
+    <div class="form-floating my-3">
+        <textarea class="form-control" placeholder="Write your confession here..." name='feedbacktext'id="floatingTextarea2"
+            style="height: 100px"></textarea>
+        <label for="floatingTextarea2">Write your feedback here...</label>
+    </div>
+    <div class="my-3">
+        <label for="" class="form-label">Your name(Optional)</label>
+        <input type="text" class="form-control" id="yourself" name="yourname">
+    </div>
+    <div class="my-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock body %}

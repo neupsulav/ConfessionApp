@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | LCC-Confession{% endblock title %}
+
+{% block body %}
+<div class="container w-50">
+    {% for n in info reversed  %}
+        <div class="card text-center my-5">
+            <div class="card-body">
+                <h5 class="card-title"><strong>To:</strong> {{n.tosendto}} ({{n.facultyis}})</h5>
+                <p class="card-text">{{n.confessionmsg}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                <strong>By:</strong> {% if n.youridentification != '' %} {{n.youridentification}} {% else %} Anonymous {% endif %} 
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}My Confessions | LCC-Confession{% endblock title %}
+
+{% block body %}
+{% if success %}
+<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+    <strong>Your confession has been published</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% if error %}
+<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+    <strong> First three fields must be filled compulsarily!</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+    <form class=" container" method="post" action="myconfessions">
+        {% csrf_token %}
+        <div class="my-3">
+            <label for="" class="form-label">To whom?</label>
+            <input type="text" class="form-control" id="towhom" name="towhom">
+        </div>
+        <div class="my-3">
+            <label for="inputState" class="form-label">His/Her faculty</label>
+            <select id="inputState" class="form-select" name="faculty">
+                <option selected>Bsc.CSIT</option>
+                <option>BCA</option>
+                <option>BIM</option>
+            </select>
+        </div>
+        <div class="form-floating my-3">
+            <textarea class="form-control" placeholder="Write your confession here..." name='confessiontext'id="floatingTextarea2"
+                style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Write your confession here...</label>
+        </div>
+        <div class="my-3">
+            <label for="" class="form-label">Your Identity/Nickname(Optional)</label>
+            <input type="text" class="form-control" id="yourself" name="yourself">
+        </div>
+        <div class="my-3">
+            <button type="submit" class="btn btn-primary">Publish</button>
+        </div>
+    </form>
+{% endblock body %}
